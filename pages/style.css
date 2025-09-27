@@ -1,0 +1,102 @@
+:root {
+  --primary-color: #f35588;
+  --secondary-color: #45b2ba; 
+  --buttons-grad: linear-gradient(to right bottom, var(--primary-color), var(--secondary-color));
+
+  --bg-color: whitesmoke;
+  --fg-color: white;
+
+  --font-primary-color: black;
+  --font-secondary-color: rgb(100, 100, 100);
+
+  --button-padding-x: 0.5rem;
+  --button-padding-y: 0.75rem;
+  --button-radius: 12px;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.25rem;
+  color: var(--font-primary-color);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+}
+
+header {
+  position: sticky;
+  top: 0;
+  height: 2.5rem;
+  padding: 0.75rem 1.5rem;
+  align-content: center;
+
+  background-color: var(--fg-color);
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 15%);
+}
+
+button {
+  background: none;
+  font-size: inherit;
+  border: 1px solid black;
+  border-radius: var(--button-radius);
+  padding: calc(var(--button-padding-x) + 2px + 0.15rem) calc(var(--button-padding-y) + 2px + 0.15rem);
+}
+
+main {
+  padding: 0 1.5rem;
+  width: 45%;
+  height: calc(100vh - 2.5rem - 2*0.75rem);
+
+  @media (width < 48rem) {
+    width: auto;
+  }
+}
+
+landing {
+  height: 100vh;
+  align-self: center;
+}
+
+main button {
+  position: relative;
+  border-color: transparent;
+
+  transition: all 150ms ease-in-out;
+
+  &.highlight {
+    background: #000;
+    background-repeat: no-repeat !important;
+    background-origin: border-box !important;
+    color: var(--bg-color);
+  }
+
+  &:hover {
+    translate: 0 -5px;
+    &::before {
+      content: "";
+      inset: 0;
+      position: absolute;
+      background: var(--buttons-grad);
+      z-index: -1;
+      border-radius: var(--button-radius);
+    }
+  }
+
+  &:not(.highlight)::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: 2px;
+    border-radius: var(--button-radius);
+    background: #000;
+    background-repeat: no-repeat;
+    mask: 
+      conic-gradient(#000 0 0) content-box, 
+      conic-gradient(#000 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
