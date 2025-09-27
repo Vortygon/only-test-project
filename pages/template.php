@@ -8,7 +8,11 @@
     <style><?php include("./pages/style.css") ?></style>
   </head>
   <body>
-    <header><strong>Only.Auth</strong></header>
+    <header>
+      <strong>Only.Auth</strong>
+      <button type="button">Регистрация</button>
+      <button type="button">Вход</button>
+    </header>
     <main>
       <?php
         include("index.php");

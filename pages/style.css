@@ -26,15 +26,33 @@ body {
 }
 
 header {
+  display: flex;
   position: sticky;
   top: 0;
   height: 2.5rem;
   padding: 0.75rem 1.5rem;
+  gap: 8px;
   align-content: center;
+  align-items: center;
 
   background-color: var(--fg-color);
   border-radius: 0 0 16px 16px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 15%);
+
+  button {
+    padding: 0.4rem 0.5rem;
+    float: right;
+    transition: all 100ms ease-in-out;
+
+    &:hover {
+      background-color: black;
+      color: white;
+    }
+  }
+
+  strong {
+    margin-right: auto;
+  }
 }
 
 button {
@@ -47,7 +65,7 @@ button {
 
 main {
   padding: 0 1.5rem;
-  width: 45%;
+  width: 60%;
   height: calc(100vh - 2.5rem - 2*0.75rem);
 
   @media (width < 48rem) {
@@ -55,15 +73,16 @@ main {
   }
 }
 
-landing {
-  height: 100vh;
-  align-self: center;
+#landing {
+  height: 100%;
+  align-content: center;
+  padding-inline: 5rem;
+  /* background-color: rebeccapurple; */
 }
 
 main button {
   position: relative;
   border-color: transparent;
-
   transition: all 150ms ease-in-out;
 
   &.highlight {
