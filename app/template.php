@@ -16,7 +16,6 @@
     <main>
       <?php
         $router->resolve($request);
-        // include "index.php";
       ?>
     </main>
   </body>
