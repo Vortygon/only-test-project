@@ -4,18 +4,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./favicon.png" type="image/png">
     <title>Главная страница</title>
-    <link rel="stylesheet" href="./pages/style.css">
-    <style><?php include("./pages/style.css") ?></style>
+    <link rel="stylesheet" href="./pages/style.css" type="text/css">
+    <style><?php include "./pages/style.css" ?></style>
   </head>
   <body>
     <header>
-      <strong>Only.Auth</strong>
-      <button type="button">Регистрация</button>
-      <button type="button">Вход</button>
+      <a class="logo" href="/">Only.Auth</a>
+      <a href="/register" class="button">Регистрация</a>
+      <a href="/login" class="button">Вход</a>
     </header>
     <main>
       <?php
-        include("index.php");
+        $router->resolve($request);
+        // include "index.php";
       ?>
     </main>
   </body>

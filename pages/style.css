@@ -13,6 +13,10 @@
   --button-padding-y: 0.75rem;
   --button-radius: 12px;
 
+  --header-height: 2.5rem;
+  --header-radius: 16px;
+  --page-content-height: calc(100vh - 1.6*var(--header-height));
+
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.25rem;
   color: var(--font-primary-color);
@@ -29,20 +33,20 @@ header {
   display: flex;
   position: sticky;
   top: 0;
-  height: 2.5rem;
+  height: var(--header-height);
   padding: 0.75rem 1.5rem;
   gap: 8px;
-  align-content: center;
   align-items: center;
 
   background-color: var(--fg-color);
-  border-radius: 0 0 16px 16px;
+  border-radius: 0 0 var(--header-radius) var(--header-radius);
   box-shadow: 0 0 10px rgba(0, 0, 0, 15%);
 
-  button {
-    padding: 0.4rem 0.5rem;
+  button, .button {
+    padding: 0.35rem 0.5rem;
     float: right;
     transition: all 100ms ease-in-out;
+    font-size: large;
 
     &:hover {
       background-color: black;
@@ -50,12 +54,12 @@ header {
     }
   }
 
-  strong {
+  .logo {
     margin-right: auto;
   }
 }
 
-button {
+button, .button {
   background: none;
   font-size: inherit;
   border: 1px solid black;
@@ -65,8 +69,6 @@ button {
 
 main {
   padding: 0 1.5rem;
-  width: 60%;
-  height: calc(100vh - 2.5rem - 2*0.75rem);
 
   @media (width < 48rem) {
     width: auto;
@@ -74,13 +76,23 @@ main {
 }
 
 #landing {
-  height: 100%;
-  align-content: center;
+  height: var(--page-content-height);
   padding-inline: 5rem;
   /* background-color: rebeccapurple; */
+
+  /* h2 {
+    padding-block-start: 0.83em;
+    margin: 0;
+  } */
+
+  #info {
+    width: 60%;
+    height: 100%;
+    align-content: center;
+  }
 }
 
-main button {
+main button, main .button {
   position: relative;
   border-color: transparent;
   transition: all 150ms ease-in-out;
@@ -118,4 +130,24 @@ main button {
     mask-composite: exclude;
     pointer-events: none;
   }
+}
+
+.logo {
+  user-select: none;
+  font-weight: bold;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.requestCodeText {
+  display: flex;
+  height: var(--page-content-height);
+  width: 100%; 
+  margin: 0;
+  text-align: center; 
+  justify-content: center;
+  align-items: center;
 }
