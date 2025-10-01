@@ -16,11 +16,16 @@ $request = $_SERVER["REQUEST_URI"];
 $uri = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 
 // Пути
-$router->addRoute("GET", "/",  fn() => $router->renderPage("index")); // Главная страница
+$router->addRoute("GET", "/", false, function () use ($router) {
+  $router->renderPage("index");
+});
 
 // API
-$router->addApiRoute("GET", "/api/test", function () use ($router) {
+$router->addApiRoute("GET", "/api/routes", false, function () use ($router) {
   return $router->getRoutes();
+});
+$router->addApiRoute("GET", "/api/api_routes", false, function () use ($router) {
+  return $router->getApiRoutes();
 });
 
 $router->resolve();

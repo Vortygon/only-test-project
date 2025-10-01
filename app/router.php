@@ -13,29 +13,37 @@ class Router {
     $this->publicDir = $workDir . "/public/";
     $this->templateDir = $templateDir;
     $this->componentsDir = $workDir . "/app/components/";
-    $this->addRoute("GET", "/404", fn() => $this->renderPage("/404"));
+    $this->addRoute("GET", "/404", false, fn() => $this->renderPage("/404"));
     $this->scanPagesDir();
   }
 
-  public function addRoute($method, $path, $callback) {
-    // $this->routes[$method][$path] = $callback;
+  public function addRoute($method, $path, $protected, $callback) {
+    foreach ($this->routes as $route) {
+      if ($route["method"] == $method && $route["path"] == $path) return;
+    }
     $this->routes[] = [
       "method" => $method,
       "path" => $path,
+      "protected" => $protected,
       "callback" => $callback,
     ];
   }
 
-  public function addApiRoute($method, $endpoint, $callback) {
+  public function addApiRoute($method, $endpoint, $protected, $callback) {
     $this->apiRoutes[] = [
       "method" => $method,
       "endpoint" => $endpoint,
+      "protected" => $protected,
       "callback" => $callback,
     ];
   }
 
   public function getRoutes() {
     return $this->routes;
+  }
+
+  public function getApiRoutes() {
+    return $this->apiRoutes;
   }
 
   // Сканирование папки /pages/ и создание путей к страницам
@@ -53,7 +61,9 @@ class Router {
       }
       
       if (is_file($filePath)) {
-        $this->addRoute("GET", "/" . $path . "/" . pathinfo($filePath, PATHINFO_FILENAME), fn() => $this->renderPage("/" . $path . "/" . pathinfo($filePath, PATHINFO_FILENAME)));
+        $finalDir = $path . "/" . pathinfo($filePath, PATHINFO_FILENAME);
+        if (strpos($finalDir, "/") !== 0) $finalDir = "/" . $finalDir;
+        $this->addRoute("GET", $finalDir, false, fn() => $this->renderPage($finalDir));
       }
     }
   }
@@ -103,8 +113,8 @@ class Router {
 
   public function renderPage($path) {
     ob_start();
-    include $this->pagesDir . $path . ".php";
     $componentsDir =  $this->componentsDir;
+    include $this->pagesDir . $path . ".php";
     $content = ob_get_clean();
     
     if (isset($this->templateDir)) {
