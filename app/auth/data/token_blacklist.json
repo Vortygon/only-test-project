@@ -1,0 +1,30 @@
+[
+    {
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiMTk1NzQyNzY1NzY4ZGQ5ZGIzNTdmMWMwLjMxMzQ2OTc2IiwidXNlcm5hbWUiOiJUZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwicGhvbmUiOiIrNzEyMzQ1Njc4OTAiLCJpYXQiOjE3NTk0Mzg4NTgsImV4cCI6MTc1OTUyNTI1OH0.7guoRCB49rbq6BVDaabUKzBoWzz-jzltLJjaTd-lwHw",
+        "blacklisted_at": "02-10-2025 21:01:12"
+    },
+    {
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiOTE3NjAyNjU3NjhkZWYxYTExYzY4YjkuOTQ0NzU2MTgiLCJ1c2VybmFtZSI6InNkZnNkZnNkZnNkIiwiZW1haWwiOiJzZGZzZGZzZkBzZGZzZGZhLmFzZCIsInBob25lIjoiMTIzMTIzMTMzMyIsImlhdCI6MTc1OTQ0MTM0NSwiZXhwIjoxNzU5NTI3NzQ1fQ.3ijAXNc78Shc6NkbpjDdANPHU29339KmrQq_jKNjmj8",
+        "blacklisted_at": "02-10-2025 21:42:41"
+    },
+    {
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiOTE3NjAyNjU3NjhkZWYxYTExYzY4YjkuOTQ0NzU2MTgiLCJ1c2VybmFtZSI6InNkZnNkZnNkZnNkIiwiZW1haWwiOiJzZGZzZGZzZkBzZGZzZGZhLmFzZCIsInBob25lIjoiMTIzMTIzMTMzMyIsImlhdCI6MTc1OTQ0MTM3MCwiZXhwIjoxNzU5NTI3NzcwfQ.YlBVFU6IiYyqLKvR2nLh7MZVhtIX0D3UFMzttxI1oEI",
+        "blacklisted_at": "02-10-2025 21:42:53"
+    },
+    {
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiOTE3NjAyNjU3NjhkZWYxYTExYzY4YjkuOTQ0NzU2MTgiLCJ1c2VybmFtZSI6IlRlc3QyIiwiZW1haWwiOiJzZGZzZGZzZkBzZGZzZGZhLmFzZCIsInBob25lIjoiMTIzMTIzMTMzMyIsImlhdCI6MTc1OTQ0MTQ0NCwiZXhwIjoxNzU5NTI3ODQ0fQ.2RrmELL891LfksC2gN6ZJkgpbZY7apA7gWYFwEuYz2U",
+        "blacklisted_at": "02-10-2025 22:16:03"
+    },
+    {
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiOTE3NjAyNjU3NjhkZWYxYTExYzY4YjkuOTQ0NzU2MTgiLCJ1c2VybmFtZSI6ImFzZGZhc2QiLCJlbWFpbCI6InNkZnNkZnNmQHNkZnNkZmEuYXNkIiwicGhvbmUiOiIxMjMxMjMxMzMzIiwiaWF0IjoxNzU5NDQzNDIwLCJleHAiOjE3NTk1Mjk4MjB9.4a2zvxFcEToIu9ccHcp7gf4KR2E8UG-3brvJTyicasg",
+        "blacklisted_at": "02-10-2025 22:27:42"
+    },
+    {
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiODM2NzAyOTcwNjhkZWZjYWIxNDgxMDYuMzI2NDIwOTEiLCJ1c2VybmFtZSI6IkFtYW5kYSIsImVtYWlsIjoiYW1hbmRhX2Jlc3RAbWFpbC5ydSIsInBob25lIjoiKzcgKDEyMykgNDU2LTc4LTkwIiwiaWF0IjoxNzU5NDQ4MTQ1LCJleHAiOjE3NTk1MzQ1NDV9.ti0nsLOolDANDctQt_LAC19QKvM6AdpTv-Q7dnCehtc",
+        "blacklisted_at": "02-10-2025 23:36:18"
+    },
+    {
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiMTk1NzQyNzY1NzY4ZGQ5ZGIzNTdmMWMwLjMxMzQ2OTc2IiwidXNlcm5hbWUiOiJUZXN0IiwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwicGhvbmUiOiIrNyAoMTIzKSA0NTYtNzgtOTAiLCJpYXQiOjE3NTk0NDgyMDksImV4cCI6MTc1OTUzNDYwOX0.OCfpDjxcW2sWgZ-1j59gjn_08JOoPPEFvpxA_1Vlksg",
+        "blacklisted_at": "02-10-2025 23:37:16"
+    }
+]

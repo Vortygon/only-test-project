@@ -1,0 +1,20 @@
+[
+    {
+        "id": "195742765768dd9db357f1c0.31346976",
+        "username": "Test",
+        "email": "test@test.com",
+        "phone": "+7 (123) 456-78-90",
+        "password": "$2y$12$5gOBWLsJO9F\/PcZDJjqPWud3BJMTMkI\/MojmLwdjbWvyVmnz0yEDu",
+        "creation_date": "01-10-2025 21:31:31",
+        "updated_at": "02-10-2025 23:36:49"
+    },
+    {
+        "id": "83670297068defcab148106.32642091",
+        "username": "Amanda",
+        "email": "amanda_best@mail.ru",
+        "phone": "+7 (800) 555-35-35",
+        "password": "$2y$12$JW3p1NvdduWmkuJuoepxl.BW\/czpBqcPOq8Pf1weo1KEnZwPW9HKe",
+        "creation_date": "02-10-2025 22:28:59",
+        "updated_at": "02-10-2025 23:38:59"
+    }
+]

@@ -13,8 +13,7 @@ class Router {
     $this->publicDir = $workDir . "/public/";
     $this->templateDir = $templateDir;
     $this->componentsDir = $workDir . "/app/components/";
-    $this->addRoute("GET", "/404", false, fn() => $this->renderPage("/404"));
-    $this->scanPagesDir();
+    // $this->scanPagesDir();
   }
 
   public function addRoute($method, $path, $protected, $callback) {
@@ -47,7 +46,7 @@ class Router {
   }
 
   // Сканирование папки /pages/ и создание путей к страницам
-  private function scanPagesDir($path = "") {
+  public function scanPagesDir($path = "") {
     $files = scandir($this->pagesDir . $path);
     
     foreach ($files as $file) {
@@ -64,16 +63,28 @@ class Router {
         $finalDir = $path . "/" . pathinfo($filePath, PATHINFO_FILENAME);
         if (strpos($finalDir, "/") !== 0) $finalDir = "/" . $finalDir;
         $this->addRoute("GET", $finalDir, false, fn() => $this->renderPage($finalDir));
+        $this->addRoute("POST", $finalDir, false, fn() => $this->renderPage($finalDir));
       }
     }
   }
 
   public function resolve() {
-    $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-    $method = $_SERVER['REQUEST_METHOD'];
+    $uri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
+    $method = $_SERVER["REQUEST_METHOD"];
+
+    // Настройка CORS
+    // if ($method === "OPTIONS") {
+        // header("Access-Control-Allow-Origin: *");
+        // header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+        // header("Access-Control-Allow-Headers: Content-Type, Authorization");
+        // http_response_code(200);
+        // exit;
+    // }
 
     // Обработка запросов к API
     if ($this->handleApi($method, $uri)) {
+      header("Access-Control-Allow-Origin: *");
+      header("Access-Control-Allow-Methods: GET, POST, PUT, PATCH, DELETE, OPTIONS");
       return;
     }
 
@@ -111,6 +122,7 @@ class Router {
     return false;
   }
 
+  // Отрисовка страницы
   public function renderPage($path) {
     ob_start();
     $componentsDir =  $this->componentsDir;
@@ -124,49 +136,86 @@ class Router {
     }
   }
 
+  // Обработка страниц
   private function handlePage($method, $uri) {
     foreach ($this->routes as $route) {
-      if ($route['method'] == $method && $route['path'] == $uri) {
-        call_user_func($route['callback']);
+      if ($route["method"] == $method && $route["path"] == $uri) {
+        if ($route["protected"]) {
+          $auth = new Auth();
+          $user = $auth->check();
+          if (!$user) {
+            http_response_code(401);
+            header("Location: /");
+            exit;
+          }
+        }
+        call_user_func($route["callback"]);
         return true;
       }
     }
     return false;
   }
 
+  // Обработка запросов API
   private function handleApi($method, $uri) {
-    if (strpos($uri, '/api/') !== 0) return false;
+    if (strpos($uri, "/api/") !== 0) return false;
     foreach ($this->apiRoutes as $route) {
-      if ($route['method'] == $method && $route['endpoint'] == $uri) {
-        header('Content-Type: application/json');
-        echo json_encode(call_user_func($route['callback']));
+      if ($route["method"] == $method && $route["endpoint"] == $uri) {
+        header("Content-Type: application/json");
+
+        try {
+          if ($route["protected"]) {
+            $auth = new Auth();
+            $user = $auth->verifyToken();
+            $result = call_user_func($route["callback"]);
+          } else {
+            $result = call_user_func($route["callback"]);
+          }
+          echo json_encode($result);
+        } catch (Exception $e) {
+          http_response_code(401);
+          echo json_encode(["error"=> $e->getMessage()]);
+        }
+
         return true;
       }
     }
     return false;
+  }
+
+  // Проверка авторизации
+  private function checkAuth() {
+    require_once __DIR__ . "/auth/session_helper.php";
+    return SessionHelper::getUser() ? true : false;
+  }
+
+  // Выполнить внутренний запрос к API
+  public function requestInternalApi($method, $uri) {
+    ob_start();
+    $this->handleApi($method, $uri);
+    $content = ob_get_clean();
+    return $content;
   }
 
 }
 
-// Получаем MIME-тип содержимого файла. (mime_content_type() не доступен)
+// Получаем MIME-тип содержимого файла
 function getMimeType($filename) {
     $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
     $map = [
-        'css'  => 'text/css',
-        'js'   => 'application/javascript',
-        'json' => 'application/json',
-        'jpg'  => 'image/jpeg',
-        'jpeg' => 'image/jpeg',
-        'png'  => 'image/png',
-        'gif'  => 'image/gif',
-        'svg'  => 'image/svg+xml',
-        'ico'  => 'image/x-icon',
-        'html' => 'text/html',
-        'txt'  => 'text/plain',
-        'pdf'  => 'application/pdf',
-        'default' => 'application/octet-stream'
+        "css"  => "text/css",
+        "js"   => "application/javascript",
+        "json" => "application/json",
+        "jpg"  => "image/jpeg",
+        "jpeg" => "image/jpeg",
+        "png"  => "image/png",
+        "gif"  => "image/gif",
+        "svg"  => "image/svg+xml",
+        "ico"  => "image/x-icon",
+        "html" => "text/html",
+        "txt"  => "text/plain",
+        "pdf"  => "application/pdf",
+        "default" => "application/octet-stream"
     ];
-    return $map[$ext] ?? $map['default'];
+    return $map[$ext] ?? $map["default"];
 }
-
-?>

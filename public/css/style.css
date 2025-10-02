@@ -1,6 +1,7 @@
 :root {
   --primary-color: #f35588;
   --secondary-color: #45b2ba; 
+  --secondary-color: transparent; 
   --buttons-grad: linear-gradient(to right bottom, var(--primary-color), var(--secondary-color));
 
   --bg-color: whitesmoke;
@@ -23,6 +24,7 @@
   font-size: 1.25rem;
   color: var(--font-primary-color);
   -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
 }
 
 body {
@@ -82,20 +84,13 @@ main {
 #landing {
   height: var(--page-content-height);
   padding-inline: 5rem;
-  /* overflow: hidden; */
   position: relative;
-
-  /* h2 {
-    padding-block-start: 0.83em;
-    margin: 0;
-  } */
 
   &::before {
     content: "";
     position: absolute;
     background-image: url("/img/landing_background.png");
     width: 75%;
-    /* height: 100%; */
     right: 0;
     top: 5%;
     bottom: 5%;
@@ -130,28 +125,41 @@ main {
   }
 }
 
-main button, main .button {
+main button, main .button, .panel .button {
   position: relative;
   border-color: transparent;
   transition: all 150ms ease-in-out;
+  background: var(--fg-color);
 
   &.highlight {
     background: #000;
     background-repeat: no-repeat !important;
     background-origin: border-box !important;
+    border: none;
     color: var(--bg-color);
+  }
+
+  &::before {
+    content: "";
+    inset: 0;
+    position: absolute;
+    background: var(--buttons-grad);
+    z-index: -1;
+    border-radius: var(--button-radius);
+    opacity: 0;
+    transition: all 150ms ease-in-out;
   }
 
   &:hover {
     translate: 0 -5px;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 15%);
+    
     &::before {
-      content: "";
-      inset: 0;
-      position: absolute;
-      background: var(--buttons-grad);
-      z-index: -1;
-      border-radius: var(--button-radius);
+      opacity: 50%;  
+    }
+    
+    &:not(.highlight)::after {
+      background: linear-gradient(to right bottom, var(--primary-color), black);
     }
   }
 
@@ -161,13 +169,19 @@ main button, main .button {
     inset: 0;
     padding: 2px;
     border-radius: var(--button-radius);
-    background: #000;
+    background: black;
     background-repeat: no-repeat;
     mask: 
       conic-gradient(#000 0 0) content-box, 
       conic-gradient(#000 0 0);
     mask-composite: exclude;
     pointer-events: none;
+
+    
+  }
+
+  &:disabled {
+    opacity: 50%;
   }
 }
 
@@ -242,4 +256,15 @@ input {
       }
     }
   }
+}
+
+.message {
+  background: hsla(0, 100%, 50%, 10%);
+  border: 2px solid hsl(0, 75%, 75%);
+  border-radius: var(--header-radius);
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  margin-bottom: -1rem;
 }
