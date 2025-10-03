@@ -283,16 +283,20 @@ function registerRoutes($router) {
     return $result;
   });
 
-  $get("/api/user", true, function () use ($auth) {
-    require_once __DIR__ . "/auth/session_helper.php";
+  // $get("/api/user", true, function () use ($auth) {
+  //   require_once __DIR__ . "/auth/session_helper.php";
 
-    $user = SessionHelper::getUser() ?? null;
-    if ($user) {
-      return ["success" => true, "user" => $user];
-    }
-    return ["success" => false, "message" => "Не удалось получить данные о пользователе"];
+  //   try {
+  //     $user = SessionHelper::getUser() ?? null;
+  //     if ($user) {
+  //       return ["success" => true, "user" => $user];
+  //     }
+  //   } catch (Exception $e) {
+  //     return ["success" => false, "message" => "Не удалось получить данные о пользователе. " . $e->getMessage()];
+  //   }
+  //   return ["success" => false, "message" => "Не удалось получить данные о пользователе"];
 
-  });
+  // });
 
 
   // После того, как определили пути, сканируем директорию /pages/ и добавляем страницы

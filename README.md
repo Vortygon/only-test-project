@@ -50,8 +50,9 @@ project/
 ### Точки API
 - ``GET /api/routes`` - Список путей к страницам
 - ``GET /api/api_routes`` - Список точек API
+- ``GET /api/user`` - Данные о текущем пользователе
 - ``POST /api/auth/register`` - Запрос регистрации пользователя
-- ``POST /api/auth/login`` - Запрос входа
-- ``GET /api/auth/logout`` - Деавторизация
-- ``PUT /api/auth/change`` - Запрос изменения даных
+- ``POST /api/auth/login`` - Запрос авторизации
+- ``POST /api/auth/logout`` - Запрос деавторизации
+- ``POST /api/auth/change`` - Запрос изменения даных
 
