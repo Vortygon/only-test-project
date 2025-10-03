@@ -56,4 +56,5 @@ project/
 - ``POST /api/auth/logout`` - Запрос деавторизации
 - ``POST /api/auth/change`` - Запрос изменения даных
 
-### ![Скриншот](/public/img/screenshot.jpeg)
+### Скриншот
+![Скриншот](/public/img/screenshot.jpeg)
