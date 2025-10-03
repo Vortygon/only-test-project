@@ -2,41 +2,41 @@
 
 ### Структура проекта
 ```
-project/
-├─ app/								- Приложение
-│  ├─ auth/							- Авторизация
-│  │  ├─ data/						- Хранилище данных авторизации
-│  │  │  ├─ active_sessions.json
-│  │  │  ├─ token_blacklist.json
-│  │  │	 └─ users.json
-│  │  ├─ auth.php
-│  │  ├─ captcha.php
-│  │  ├─ config.php
-│  │  ├─ jwt.php
-│  │  ├─ session_helper.php
-│  │  └─ storage.php
-│  ├─ components/    - компоненты
-│  │  └─ header.php  - верхняя панель
-│  ├─ router.php     - роутер
-│  ├─ routes.php
-│  └─ template.php   - шаблон
-├─ pages/            - страницы
-│  ├─ auth/          - страницы авторизации
-│  │  ├─ login.php
-│  │  └─ register.php
-│  ├─ 404.php
-│  ├─ index.php      - начальная страница
-│  └─ profile.php
-├─ public/           - статичные файлы
-│  ├─ css/
-│  │  └─ style.css   - стиль сайта
-│  └─ img/
-│     ├─ favicon.png
-│     └─ landing_background.png
-├─ launch.bat        - запуск веб-сервера
-├─ main.php          - главный файл приложения
-└─ README.md
-```
+project/ 
+├── app/								- Директория приложения
+│   ├── auth/							-
+│   │   ├── data/ 						- Хранилище
+│   │   │   ├── active_sessions.json	- Активные сессии
+│   │   │   ├── token_blacklist.json	- Чёрный список токенов
+│   │   │   └── users.json 				- Пользователи
+│   │   ├── auth.php 					- Авторизация
+│   │   ├── captcha.php 				- Проверка Яндекс Капчи
+│   │   ├── config.php 					- Конфигурация авторизации
+│   │   ├── jwt.php 					- Работа с токенами
+│   │   ├── session_helper.php 			- Управление сессией
+│   │   └── storage.php 				- Работа с хранилищем
+│   ├── components/ 					- Компоненты страниц
+│   │   └── header.php					- Верхняя панель сайта
+│   ├── router.php 						- Роутер
+│   ├── routes.php 						- Определение путей страниц и API
+│   └── template.php 					- Шаблон для отрисовки страницы
+├── pages/ 								- Страницы 
+│   ├── auth/ 							- Страницы авторизации
+│   │   ├── login.php 					- Страница входа
+│   │   └── register.php 				- Страница регистрации
+│   ├── 404.php 						- Страница ошибки 404
+│   ├── index.php 						- Главная страница
+│   └── profile.php 					- Страница пользователя
+├── public/ 							- Статичные файлы
+│   ├── css/ 							- Стили
+│   │   └── style.css 					- Главный файл стиля
+│   └── img/ 							- Изображения
+│       ├── favicon.png 				- Иконка
+│       └── landing_background.png		- Фон главной страницы
+├── launch.bat 							- Запустить веб сервер
+├── main.php 							- Главный файл
+└── README.md 							- README
+```	
 
 ### Реализованный функционал
 - 🖥️ Главная страница 
