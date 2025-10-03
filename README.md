@@ -4,7 +4,7 @@
 ```
 project/ 
 ├── app/								- Директория приложения
-│   ├── auth/							-
+│   ├── auth/							- Авторизация
 │   │   ├── data/ 						- Хранилище
 │   │   │   ├── active_sessions.json	- Активные сессии
 │   │   │   ├── token_blacklist.json	- Чёрный список токенов
