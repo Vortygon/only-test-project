@@ -12,7 +12,9 @@ $name = $user["username"] ?? null;
   <?php if ($user) {
     echo <<<HTML
       Пользователь: $name
-      <a href="/auth/logout" class="button">Выход</a>
+      <form method="get" action="/auth/logout">
+        <input type="submit" value="Выход" class="button">
+      </form>
     HTML;
   } else {
     echo <<<HTML
